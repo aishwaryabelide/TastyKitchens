@@ -1,0 +1,145 @@
+.login-logo-container {
+  text-align: center;
+}
+
+.label {
+  font-family: DM Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #475569;
+  margin-top: 10px;
+}
+
+.login-form {
+  text-align: left;
+  align-items: flex-start;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.input-container {
+  background: #e2e8f0;
+  border-radius: 2px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 0px;
+  font-family: DM Sans;
+}
+
+.form {
+  margin-top: 30px;
+}
+
+.login-button {
+  background: #f7931e;
+  border-radius: 8px;
+  border-width: 0px;
+  outline: none;
+  width: 100%;
+  padding: 10px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-family: DM Sans;
+}
+
+.error-msg {
+  font-family: DM Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  margin-top: 0px;
+  color: #ef4444;
+}
+
+.page-break {
+  display: flex;
+}
+
+.image-container {
+  background-image: url('https://res.cloudinary.com/aishwaryaproject/image/upload/v1636352518/TastyKitchens/Rectangle_1456_s5hxc0.png');
+  background-size: cover;
+  height: 100vh;
+  width: 50vw;
+}
+.login-page-container {
+  background-color: #fefeff;
+  height: 100vh;
+  width: 50vw;
+}
+
+.small-device-logo {
+  display: none;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  margin: 20%;
+  background-color: #fefeff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  padding: 5%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 20%;
+  background-color: #fefeff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  padding: 5%;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .page-break {
+    flex-direction: column;
+    width: 100vw;
+  }
+  .image-container {
+    display: none;
+  }
+  .login-page-container {
+    width: 100vw;
+  }
+  .login-form {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .large-device-logo {
+    display: none;
+  }
+
+  .small-device-logo {
+    display: block;
+    padding-left: 40px;
+    margin-right: 0px;
+    margin-top: 0px;
+  }
+
+  .login-container {
+    padding: 0px;
+    margin: 10%;
+  }
+
+  .login-logo-container {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 0px;
+  }
+
+  .login-button {
+    margin-bottom: 10%;
+  }
+}
+
+.loginpage-cover {
+  height: 100vh;
+  width: 100%;
+}
