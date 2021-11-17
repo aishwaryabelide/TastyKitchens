@@ -1,15 +1,20 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Title, Heading} from '../../styledComponents'
+import {Redirect} from 'react-router-dom'
+
+import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
+
 import './index.css'
 
 class Login extends Component {
   state = {
     username: '',
     password: '',
-    errormsg: '',
+    showSubmitError: false,
+    errorMsg: '',
+    isPasswordVisible: false,
   }
-
+  c
   onChangeUsername = event => {
     this.setState({username: event.target.value})
   }
@@ -20,6 +25,7 @@ class Login extends Component {
 
   onSubmitSuccess = jwtToken => {
     const {history} = this.props
+
     Cookies.set('jwt_token', jwtToken, {
       expires: 30,
       path: '/',
@@ -28,16 +34,11 @@ class Login extends Component {
   }
 
   onSubmitFailure = errorMsg => {
-    let errorMessage
-    if (errorMsg === "username and password didn't match") {
-      errorMessage = 'Please enter a valid Username & Password'
-    } else if (errorMsg === 'invalid username') {
-      errorMessage = 'Invalid Username'
-    }
-    this.setState({errormsg: errorMessage})
+    console.log(errorMsg)
+    this.setState({showSubmitError: true, errorMsg})
   }
 
-  onSubmitForm = async event => {
+  submitForm = async event => {
     event.preventDefault()
     const {username, password} = this.state
     const userDetails = {username, password}
@@ -55,71 +56,106 @@ class Login extends Component {
     }
   }
 
-  render() {
-    const {username, password, errormsg} = this.state
+  onClickShow = () => {
+    this.setState({
+      isPasswordVisible: true,
+    })
+  }
+
+  onClickHide = () => {
+    this.setState({
+      isPasswordVisible: false,
+    })
+  }
+
+  renderPasswordField = () => {
+    const {password, isPasswordVisible} = this.state
     return (
-      <div className="page-break">
-        <div className="login-page-container">
-          <div className="login-container">
-            <img
-              className="small-device-logo"
-              src="https://res.cloudinary.com/aishwaryaproject/image/upload/v1636361249/TastyKitchens/Rectangle_1457_xcvbrc.png"
-              alt="logo"
-            />
-            <div className="login-logo-container">
-              <img
-                className="large-device-logo"
-                src="https://res.cloudinary.com/aishwaryaproject/image/upload/v1636352771/TastyKitchens/Vector_2_vawqif.png"
-                alt="logo"
-              />
-
-              <Title display="none" align="center">
-                Tasty Kitchens
-              </Title>
-              <Heading>Login</Heading>
-              <form className="form" onSubmit={this.onSubmitForm}>
-                <div className="login-form">
-                  <label className="label" htmlFor="username">
-                    USERNAME
-                  </label>
-                  <br />
-                  <input
-                    value={username}
-                    type="text"
-                    id="username"
-                    className="input-container"
-                    onChange={this.onChangeUsername}
-                  />
-                </div>
-
-                <div className="login-form">
-                  <label className="label" htmlFor="password">
-                    password
-                  </label>
-                  <br />
-                  <input
-                    value={password}
-                    type="password"
-                    id="password"
-                    className="input-container"
-                    onChange={this.onChangePassword}
-                  />
-                </div>
-
-                <div className="login-form">
-                  <p className="error-msg">{errormsg}</p>
-                </div>
-
-                <div className="login-form">
-                  <button className="login-button" type="submit">
-                    Login
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+      <>
+        <label className="input-label" htmlFor="password">
+          PASSWORD
+        </label>
+        <div className="password-container">
+          <input
+            type={isPasswordVisible ? 'text' : 'password'}
+            id="password"
+            className="password-input-field"
+            value={password}
+            onChange={this.onChangePassword}
+          />
+          {isPasswordVisible ? (
+            <button
+              type="button"
+              className="eye-button"
+              onClick={this.onClickHide}
+            >
+              <AiFillEyeInvisible className="eye" />
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="eye-button"
+              onClick={this.onClickShow}
+            >
+              <AiFillEye className="eye" />
+            </button>
+          )}
         </div>
-        <div className="image-container" />
+      </>
+    )
+  }
+
+  renderUsernameField = () => {
+    const {username} = this.state
+    return (
+      <>
+        <label className="input-label" htmlFor="username">
+          USERNAME
+        </label>
+        <input
+          type="text"
+          id="username"
+          className="username-input-field"
+          value={username}
+          onChange={this.onChangeUsername}
+        />
+      </>
+    )
+  }
+
+  render() {
+    const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken !== undefined) {
+      return <Redirect to="/" />
+    }
+    const {showSubmitError, errorMsg} = this.state
+    return (
+      <div className="login-form-container">
+        <img
+          src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
+          className="login-website-logo-mobile-image"
+          alt="website logo"
+        />
+        <form className="form-container" onSubmit={this.submitForm}>
+          <img
+            src="https://res.cloudinary.com/dwyoocqij/image/upload/v1632727627/Vector_ibzmon.png"
+            className="login-website-logo-desktop-image"
+            alt="website logo"
+          />
+          <h1 className="heading">Tasty Kitchens</h1>
+          <h1 className="login-heading">Login</h1>
+          <div className="input-container">{this.renderUsernameField()}</div>
+          <div className="input-container">{this.renderPasswordField()}</div>
+          <button type="submit" className="login-button">
+            Login
+          </button>
+          {showSubmitError && <p className="error-message">{errorMsg}</p>}
+        </form>
+        <img
+          src="https://res.cloudinary.com/dwyoocqij/image/upload/v1632724869/Rectangle_1456_ldoknk.jpg"
+          className="login-image"
+          alt="website login"
+        />
       </div>
     )
   }

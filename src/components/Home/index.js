@@ -1,15 +1,26 @@
-import Header from '../Header'
-import Footer from '../Footer'
-import MenuSorter from '../MenuSorter'
-import DemoCarousel from '../DemoCarousel'
+import Cookies from 'js-cookie'
+import {Redirect} from 'react-router-dom'
 
-const Home = () => (
-  <div className="home-container">
-    <Header />
-    <DemoCarousel />
-    <MenuSorter />
-    <Footer />
-  </div>
-)
+import Header from '../Header'
+import Carousel from '../Carousel'
+import PopularRestaurants from '../PopularRestaurants'
+import Footer from '../Footer'
+import './index.css'
+
+const Home = () => {
+  const jwtToken = Cookies.get('jwt_token')
+  if (jwtToken === undefined) {
+    return <Redirect to="/login" />
+  }
+
+  return (
+    <>
+      <Header activeTab="HOME" />
+      <Carousel />
+      <PopularRestaurants />
+      <Footer />
+    </>
+  )
+}
 
 export default Home
