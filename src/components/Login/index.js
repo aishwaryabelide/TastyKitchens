@@ -14,7 +14,7 @@ class Login extends Component {
     errorMsg: '',
     isPasswordVisible: false,
   }
-  c
+
   onChangeUsername = event => {
     this.setState({username: event.target.value})
   }
@@ -34,25 +34,34 @@ class Login extends Component {
   }
 
   onSubmitFailure = errorMsg => {
-    console.log(errorMsg)
-    this.setState({showSubmitError: true, errorMsg})
+    let errorMessage
+    if (errorMsg === "username and password didn't match") {
+      errorMessage = 'Please enter a valid Username & Password'
+    } else if (errorMsg === 'invalid username') {
+      errorMessage = 'Invalid Username'
+    }
+    this.setState({errorMsg: errorMessage, showSubmitError: true})
   }
 
   submitForm = async event => {
     event.preventDefault()
     const {username, password} = this.state
-    const userDetails = {username, password}
-    const url = 'https://apis.ccbp.in/login'
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(userDetails),
-    }
-    const response = await fetch(url, options)
-    const data = await response.json()
-    if (response.ok === true) {
-      this.onSubmitSuccess(data.jwt_token)
+    if (username === '' || password === '') {
+      this.setState({errorMsg: 'Fill all details', showSubmitError: true})
     } else {
-      this.onSubmitFailure(data.error_msg)
+      const userDetails = {username, password}
+      const url = 'https://apis.ccbp.in/login'
+      const options = {
+        method: 'POST',
+        body: JSON.stringify(userDetails),
+      }
+      const response = await fetch(url, options)
+      const data = await response.json()
+      if (response.ok === true) {
+        this.onSubmitSuccess(data.jwt_token)
+      } else {
+        this.onSubmitFailure(data.error_msg)
+      }
     }
   }
 
@@ -130,32 +139,38 @@ class Login extends Component {
     }
     const {showSubmitError, errorMsg} = this.state
     return (
-      <div className="login-form-container">
-        <img
-          src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
-          className="login-website-logo-mobile-image"
-          alt="website logo"
-        />
-        <form className="form-container" onSubmit={this.submitForm}>
+      <div className="login-container">
+        <div className="login-form-container">
+          <form className="form-container" onSubmit={this.submitForm}>
+            <img
+              className="small-device-logo"
+              src="https://res.cloudinary.com/aishwaryaproject/image/upload/v1636361249/TastyKitchens/Rectangle_1457_xcvbrc.png"
+              alt="website logo"
+            />
+            <img
+              className="large-device-logo"
+              src="https://res.cloudinary.com/aishwaryaproject/image/upload/v1636352771/TastyKitchens/Vector_2_vawqif.png"
+              alt="website logo"
+            />
+            <h1 className="login-heading-ele">Tasty Kitchens</h1>
+
+            <h1 className="login-text-heading">Login</h1>
+            <div className="input-container">{this.renderUsernameField()}</div>
+            <div className="input-container">{this.renderPasswordField()}</div>
+            <button type="submit" className="login-button">
+              Login
+            </button>
+            {showSubmitError && <p className="error-message">{errorMsg}</p>}
+          </form>
+        </div>
+
+        <div className="image-container">
           <img
-            src="https://res.cloudinary.com/dwyoocqij/image/upload/v1632727627/Vector_ibzmon.png"
-            className="login-website-logo-desktop-image"
+            className="welcome-image"
+            src="https://res.cloudinary.com/aishwaryaproject/image/upload/v1636352518/TastyKitchens/Rectangle_1456_s5hxc0.png"
             alt="website logo"
           />
-          <h1 className="heading">Tasty Kitchens</h1>
-          <h1 className="login-heading">Login</h1>
-          <div className="input-container">{this.renderUsernameField()}</div>
-          <div className="input-container">{this.renderPasswordField()}</div>
-          <button type="submit" className="login-button">
-            Login
-          </button>
-          {showSubmitError && <p className="error-message">{errorMsg}</p>}
-        </form>
-        <img
-          src="https://res.cloudinary.com/dwyoocqij/image/upload/v1632724869/Rectangle_1456_ldoknk.jpg"
-          className="login-image"
-          alt="website login"
-        />
+        </div>
       </div>
     )
   }

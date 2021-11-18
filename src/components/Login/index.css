@@ -1,88 +1,90 @@
+.login-heading-ele {
+  font-family: DM Sans;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #f7931e;
+}
+.login-container {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+}
+@media screen and (max-width: 768px) {
+  .login-heading-ele {
+    display: none;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+.login-text-heading {
+  font-family: DM Sans;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .login-text-heading {
+    text-align: left;
+    font-size: 24px;
+    padding-left: 10px;
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+}
+
+.eye-button {
+  font-size: 14px;
+  height: 40px;
+  border: 1px solid #d7dfe9;
+  background-color: #e2e8f0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  margin-top: 5px;
+  padding: 8px 16px 8px 16px;
+  border: none;
+  outline: none;
+}
+
+.eye {
+  height: 17px;
+  width: 17px;
+}
+
 .login-form-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   height: 100vh;
+  width: 50%;
 }
 
-@media screen and (min-width: 992px) {
-  .login-form-container {
-    flex-direction: row;
-  }
-}
-
-.login-website-logo-mobile-image {
-  width: 165px;
-  margin-top: 50px;
-  margin-bottom: 35px;
-}
-
-@media screen and (min-width: 992px) {
-  .login-website-logo-mobile-image {
-    display: none;
-  }
-}
-
-.login-image {
-  width: 278px;
-}
-
-@media screen and (min-width: 992px) {
-  .login-image {
-    height: 100%;
-    width: 40%;
-  }
-}
-
-.login-website-logo-desktop-image {
-  width: 48px;
-}
-
-@media screen and (max-width: 991px) {
-  .login-website-logo-desktop-image {
-    display: none;
-  }
-}
-
-.heading {
-  width: 172px;
-  color: #f7931e;
-  font-family: DM Sans;
-  font-style: italic;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 32px;
-}
-.login-heading {
-  color: #0f172a;
-  font-family: DM Sans;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 32px;
-  width: 80px;
-  height: 40px;
+.welcome-image {
+  height: 100vh;
+  width: 50vw;
 }
 
 .form-container {
-  margin-left: auto;
-  margin-right: 15%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
   border-radius: 8px;
   width: 100%;
   max-width: 350px;
-}
-
-@media screen and (min-width: 992px) {
-  .form-container {
-    width: 350px;
-    flex-shrink: 0;
-    box-shadow: 0px 8px 40px rgba(7, 7, 7, 0.08);
-    padding: 64px 48px 64px 48px;
-  }
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0px 8px 40px rgba(7, 7, 7, 0.08);
 }
 
 .input-container {
@@ -131,24 +133,6 @@
   width: 90%;
 }
 
-.eye-button {
-  font-size: 14px;
-  height: 40px;
-  border: 1px solid #d7dfe9;
-  background-color: #e2e8f0;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  margin-top: 5px;
-  padding: 8px 16px 8px 16px;
-  border: none;
-  outline: none;
-}
-
-.eye {
-  height: 17px;
-  width: 17px;
-}
-
 .login-button {
   font-family: 'Roboto';
   font-weight: bold;
@@ -173,4 +157,39 @@
   font-size: 12px;
   line-height: 16px;
   color: #ff0b37;
+}
+
+.small-device-logo {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .small-device-logo {
+    display: block;
+    padding-left: 40px;
+    margin-right: 0px;
+    margin-top: 0px;
+  }
+  .login-heading-ele {
+    display: none;
+  }
+  .login-website-logo-desktop-image {
+    display: none;
+  }
+  .large-device-logo {
+    display: none;
+  }
+  .login-heading {
+    text-align: left;
+  }
+  .login-form-container {
+    width: 100vw;
+    margin: 0px;
+  }
+  .image-container {
+    display: none;
+  }
+  .login-container {
+    flex-direction: column;
+  }
 }
