@@ -3,21 +3,31 @@
   width: 80%;
   border-radius: 5px;
 }
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 .restaurants-list {
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  flex-grow: 0;
-  flex-shrink: 1;
+  list-style-type: none;
   padding-left: 0px;
+  flex-shrink: 0;
 }
 
 @media screen and (max-width: 768px) {
   .restaurants-list {
-    flex-direction: column;
-    justify-content: center;
-    flex-wrap: nowrap;
+    /* flex-direction: column;
+    justify-content: center; */
+    flex-shrink: 1;
+    /* flex-wrap: nowrap; */
   }
 }
 

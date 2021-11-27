@@ -15,6 +15,10 @@ class Login extends Component {
     isPasswordVisible: false,
   }
 
+  componentDidMount() {
+    document.title = 'Project by Aishwarya'
+  }
+
   onChangeUsername = event => {
     this.setState({username: event.target.value})
   }
@@ -33,35 +37,32 @@ class Login extends Component {
     history.replace('/')
   }
 
-  onSubmitFailure = errorMsg => {
-    let errorMessage
-    if (errorMsg === "username and password didn't match") {
-      errorMessage = 'Please enter a valid Username & Password'
-    } else if (errorMsg === 'invalid username') {
-      errorMessage = 'Invalid Username'
-    }
+  onSubmitFailure = errorMessage => {
+    // let errorMessage
+    // if (errorMsg === "username and password didn't match") {
+    //   errorMessage = 'Please enter a valid Username & Password'
+    // } else if (errorMsg === 'invalid username') {
+    //   errorMessage = 'Invalid Username'
+    // }
     this.setState({errorMsg: errorMessage, showSubmitError: true})
   }
 
   submitForm = async event => {
     event.preventDefault()
     const {username, password} = this.state
-    if (username === '' || password === '') {
-      this.setState({errorMsg: 'Fill all details', showSubmitError: true})
+
+    const userDetails = {username, password}
+    const url = 'https://apis.ccbp.in/login'
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(userDetails),
+    }
+    const response = await fetch(url, options)
+    const data = await response.json()
+    if (response.ok === true) {
+      this.onSubmitSuccess(data.jwt_token)
     } else {
-      const userDetails = {username, password}
-      const url = 'https://apis.ccbp.in/login'
-      const options = {
-        method: 'POST',
-        body: JSON.stringify(userDetails),
-      }
-      const response = await fetch(url, options)
-      const data = await response.json()
-      if (response.ok === true) {
-        this.onSubmitSuccess(data.jwt_token)
-      } else {
-        this.onSubmitFailure(data.error_msg)
-      }
+      this.onSubmitFailure(data.error_msg)
     }
   }
 

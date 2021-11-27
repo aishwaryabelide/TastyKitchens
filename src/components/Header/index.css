@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 90%;
+  width: 100%;
   max-width: 1110px;
   padding-top: 25px;
   padding-bottom: 25px;
@@ -24,23 +24,31 @@
 
 .website-logo {
   width: 34px;
+  margin-right: 10px;
 }
 
-@media screen and (min-width: 768px) {
-  .website-logo {
-    width: 48px;
-  }
-}
 .heading-link {
   text-decoration: none;
 }
 .heading {
   margin-left: 20px;
+  margin: 0px;
   color: #f7931e;
   font-family: DM Sans;
   font-style: italic;
   font-weight: bold;
   font-size: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .heading {
+    margin: 0px;
+    font-family: DM Sans;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 .nav-menu {
@@ -52,6 +60,10 @@
   list-style-type: none;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.nav-menu-small-device {
+  display: none;
 }
 
 @media screen and (max-width: 767px) {
@@ -75,7 +87,6 @@
 }
 
 .logout-desktop-btn {
-  margin-top: 20px;
   font-family: 'Roboto';
   font-weight: 600;
   font-size: 10px;
@@ -88,58 +99,28 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 767px) {
-  .logout-desktop-btn {
-    display: none;
-  }
-}
-
-.logout-mobile-btn {
-  border: none;
-  padding: 0px;
-  cursor: pointer;
-  background: transparent;
-}
-
-@media screen and (min-width: 768px) {
-  .logout-mobile-btn {
-    display: none;
-  }
-}
-
-.logout-icon {
-  width: 24px;
-}
-
-.nav-menu-mobile {
-  width: 100%;
-}
-
-@media screen and (min-width: 768px) {
-  .nav-menu-mobile {
-    display: none;
-  }
-}
-
-.nav-menu-list-mobile {
+.logo-name {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  height: 70px;
-  background-color: #e6f6ff;
-  flex: 1;
-  list-style-type: none;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding: 0px;
 }
 
-.nav-menu-item-mobile {
-  margin: 0px;
-  cursor: pointer;
+@media screen and (max-width: 768px) {
+  .nav-content {
+    justify-content: space-between;
+    padding: 10px;
+    width: 95%;
+  }
+  .website-logo {
+    align-items: center;
+    width: 20px;
+    margin-right: 10px;
+  }
 }
 
-.nav-bar-image {
-  width: 24px;
+.cartCount {
+  color: white;
+  background-color: #334155;
+  padding: 5px;
+  border-radius: 80px;
+  font-size: 12px;
+  margin-left: 5px;
 }

@@ -1,25 +1,37 @@
 .food-item {
-  display: flex;
-  flex-direction: row;
+  /* /* display: flex;
+  flex-direction: row; 
   max-height: 180px;
   min-width: 35%;
   flex-shrink: inherit;
   margin: 10px;
   padding: 10px;
   border-radius: 8px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; */
+  list-style-type: none;
+  padding: 10px;
+  margin: 10px;
+
+  min-height: 200px;
+  max-width: 200px;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  border-radius: 8px;
 }
 
 .food-details-container {
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 .food-item-image {
-  width: 200px;
+  /* width: 200px;
   height: 150px;
   padding: 10px;
   border-radius: 18px;
-  margin-right: 30px;
+  margin-right: 30px; */
+  width: 180px;
+  height: 150px;
+  border-radius: 8px;
 }
 .food-name {
   font-family: DM Sans;

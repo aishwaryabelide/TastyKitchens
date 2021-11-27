@@ -1,5 +1,5 @@
-import Cookies from 'js-cookie'
-import {Redirect} from 'react-router-dom'
+// import Cookies from 'js-cookie'
+// import {Redirect} from 'react-router-dom'
 
 import Header from '../Header'
 import Carousel from '../Carousel'
@@ -7,20 +7,18 @@ import PopularRestaurants from '../PopularRestaurants'
 import Footer from '../Footer'
 import './index.css'
 
-const Home = () => {
-  const jwtToken = Cookies.get('jwt_token')
-  if (jwtToken === undefined) {
-    return <Redirect to="/login" />
-  }
+const Home = () => (
+  //   const jwtToken = Cookies.get('jwt_token')
+  //   if (jwtToken === undefined) {
+  //     return <Redirect to="/login" />
+  //   }
 
-  return (
-    <>
-      <Header activeTab="HOME" />
-      <Carousel />
-      <PopularRestaurants />
-      <Footer />
-    </>
-  )
-}
+  <>
+    <Header activeTab="HOME" />
+    <Carousel />
+    <PopularRestaurants />
+    <Footer />
+  </>
+)
 
 export default Home

@@ -87,7 +87,7 @@ class RestaurantDetails extends Component {
         ) : (
           <>
             <div className="restaurant-details-container">
-              <div>
+              <div className="restaurant-image-container ">
                 <img
                   src={imageUrl}
                   alt="restaurant"

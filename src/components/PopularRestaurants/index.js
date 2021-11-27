@@ -122,11 +122,14 @@ class PopularRestaurants extends Component {
           updateSelectedSortByValue={this.updateSelectedSortByValue}
         />
         <hr className="line" />
-        <ul className="restaurants-list">
-          {restaurantList.map(restaurant => (
-            <RestaurantCard restaurantData={restaurant} key={restaurant.id} />
-          ))}
-        </ul>
+        <div className="cards-container">
+          <ul className="restaurants-list">
+            {restaurantList.map(restaurant => (
+              <RestaurantCard restaurantData={restaurant} key={restaurant.id} />
+            ))}
+          </ul>
+        </div>
+
         <div className="pagination">
           <button
             testid="pagination-left-button"

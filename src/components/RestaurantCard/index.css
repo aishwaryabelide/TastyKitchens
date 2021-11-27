@@ -3,27 +3,44 @@
 }
 
 .restaurant-item {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center; */
   padding: 10px;
   margin: 10px;
-  flex-shrink: 1;
-  flex-grow: 0;
-  min-height: 170px;
-  min-width: 400px;
+
+  min-height: 200px;
+  max-width: 200px;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
   border-radius: 8px;
 }
 
-.restaurant-image-container {
-  align-items: center;
-  margin-right: 15px;
-}
 .restaurant-image {
-  width: 200px;
+  width: 180px;
   height: 150px;
   border-radius: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .restaurant-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    max-width: 300px;
+  }
+
+  .restaurant-image {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.card-details-container {
+  width: 100%;
+  padding-left: 10px;
 }
 
 .name {
@@ -33,7 +50,7 @@
   font-weight: bold;
   font-size: 18px;
   line-height: 20px;
-  margin-top: 30px;
+  margin-bottom: 0px;
 }
 
 .cuisine {
@@ -42,6 +59,7 @@
   font-weight: normal;
   font-size: 14px;
   color: #64748b;
+  align-self: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -50,18 +68,19 @@
   }
 
   .restaurant-image {
-    width: 160px;
-    height: 100px;
+    width: 180px;
+    height: 120px;
     max-height: 130px;
   }
 
   .name {
-    margin-top: 0px;
+    margin-top: 5px;
     font-size: 16px;
   }
 
   .cuisine {
     font-size: 12px;
+    margin: 0px;
   }
 }
 
