@@ -31,6 +31,7 @@ class App extends Component {
     const foodObject = cartList.find(
       eachCartItem => eachCartItem.id === foodItem.id,
     )
+    console.log(foodObject, 'HAi')
     if (foodObject) {
       this.setState(prevState => ({
         cartList: prevState.cartList.map(eachCartItem => {
@@ -72,6 +73,7 @@ class App extends Component {
   decreaseQuantity = id => {
     const {cartList} = this.state
     const productObject = cartList.find(eachCartItem => eachCartItem.id === id)
+    console.log(productObject, 'Decrease Quantity')
     if (productObject.quantity > 1) {
       this.setState(prevState => ({
         cartList: prevState.cartList.map(eachCartItem => {

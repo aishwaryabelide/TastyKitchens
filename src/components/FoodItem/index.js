@@ -17,7 +17,7 @@ class FoodItem extends Component {
           const {quantity} = this.state
           const {foodItemDetails} = this.props
           const {id, imageUrl, name, cost, rating} = foodItemDetails
-
+          console.log(foodItemDetails)
           const onClickAddToCart = () => {
             this.setState(
               prevState => ({

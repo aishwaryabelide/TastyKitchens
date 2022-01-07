@@ -32,7 +32,6 @@ class Login extends Component {
 
     Cookies.set('jwt_token', jwtToken, {
       expires: 30,
-      path: '/',
     })
     history.replace('/')
   }
@@ -146,7 +145,7 @@ class Login extends Component {
             <img
               className="small-device-logo"
               src="https://res.cloudinary.com/aishwaryaproject/image/upload/v1636361249/TastyKitchens/Rectangle_1457_xcvbrc.png"
-              alt="website logo"
+              alt="website login"
             />
             <img
               className="large-device-logo"
@@ -169,7 +168,7 @@ class Login extends Component {
           <img
             className="welcome-image"
             src="https://res.cloudinary.com/aishwaryaproject/image/upload/v1636352518/TastyKitchens/Rectangle_1456_s5hxc0.png"
-            alt="website logo"
+            alt="web"
           />
         </div>
       </div>
