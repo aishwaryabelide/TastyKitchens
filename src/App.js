@@ -93,31 +93,29 @@ class App extends Component {
     const {cartList} = this.state
     localStorage.setItem('cartData', JSON.stringify(cartList))
     return (
-      <BrowserRouter>
-        <CartContext.Provider
-          value={{
-            cartList,
-            addCartItem: this.addCartItem,
-            deleteCartItem: this.deleteCartItem,
-            addQuantity: this.addQuantity,
-            decreaseQuantity: this.decreaseQuantity,
-          }}
-        >
-          <Switch>
-            <Route exact path="/login" component={Login} />
-            <ProtectedRoute exact path="/" component={Home} />
-            <ProtectedRoute
-              exact
-              path="/restaurant/:id"
-              component={RestaurantDetails}
-            />
-            <ProtectedRoute exact path="/cart" component={Cart} />
-            <ProtectedRoute exact path="/payment" component={Payment} />
-            <Route path="/bad-path" component={NotFound} />
-            <Redirect to="bad-path" />
-          </Switch>
-        </CartContext.Provider>
-      </BrowserRouter>
+      <CartContext.Provider
+        value={{
+          cartList,
+          addCartItem: this.addCartItem,
+          deleteCartItem: this.deleteCartItem,
+          addQuantity: this.addQuantity,
+          decreaseQuantity: this.decreaseQuantity,
+        }}
+      >
+        <Switch>
+          <Route exact path="/login" component={Login} />
+          <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute
+            exact
+            path="/restaurant/:id"
+            component={RestaurantDetails}
+          />
+          <ProtectedRoute exact path="/cart" component={Cart} />
+          <ProtectedRoute exact path="/payment" component={Payment} />
+          <Route path="/bad-path" component={NotFound} />
+          <Redirect to="bad-path" />
+        </Switch>
+      </CartContext.Provider>
     )
   }
 }

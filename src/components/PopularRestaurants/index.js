@@ -40,7 +40,7 @@ class PopularRestaurants extends Component {
     })
     const jwtToken = Cookies.get('jwt_token')
     const {selectedSortByValue, activePage} = this.state
-    const limit = 9
+    const limit = 10
     const offset = (activePage - 1) * limit
     const url = `https://apis.ccbp.in/restaurants-list?offset=${offset}&limit=${limit}&sort_by_rating=${selectedSortByValue}`
 
@@ -53,8 +53,8 @@ class PopularRestaurants extends Component {
     const response = await fetch(url, options)
     if (response.ok) {
       const fetchedData = await response.json()
-      console.log(fetchedData)
-      const lengthOfRestaurantList = Math.ceil(fetchedData.total / 9)
+      const lengthOfRestaurantList = Math.ceil(fetchedData.total / 10)
+      console.log(lengthOfRestaurantList, activePage, 'dsfasfgdsafds')
 
       const updatedData = fetchedData.restaurants.map(restaurant => ({
         costForTwo: restaurant.cost_for_two,
@@ -96,8 +96,8 @@ class PopularRestaurants extends Component {
   }
 
   onClickRightArrow = () => {
-    const {activePage} = this.state
-    if (activePage <= 4) {
+    const {activePage, lengthOfRestaurantList} = this.state
+    if (activePage < lengthOfRestaurantList) {
       this.setState(
         prevState => ({
           activePage: prevState.activePage + 1,
@@ -108,12 +108,7 @@ class PopularRestaurants extends Component {
   }
 
   renderRestaurants = () => {
-    const {
-      restaurantList,
-      selectedSortByValue,
-      activePage,
-      lengthOfRestaurantList,
-    } = this.state
+    const {restaurantList, selectedSortByValue, activePage} = this.state
     return (
       <>
         <RestaurantHeader
@@ -140,7 +135,7 @@ class PopularRestaurants extends Component {
             <RiArrowDropLeftLine className="arrow" />
           </button>
           <h1 testid="active-page-number" className="page-numbers">
-            {activePage} of {lengthOfRestaurantList}
+            {activePage}
           </h1>
           <button
             testid="pagination-right-button"

@@ -47,7 +47,7 @@ class FoodItem extends Component {
                 <h1 className="food-name">{name}</h1>
                 <div className="cost-container">
                   <FaRupeeSign />
-                  <p className="food-cost">{`${cost}.00`}</p>
+                  <p className="food-cost">{cost}</p>
                 </div>
                 <div className="rating-container">
                   <ImStarFull className="star" />
